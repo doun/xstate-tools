@@ -226,9 +226,8 @@ const machine = createMachine(
           registerCommand(extensionContext, 'stately-xstate.edit', async () => {
             try {
               const activeTextEditor = vscode.window.activeTextEditor!;
-              const uri = resolveUriToFilePrefix(
-                activeTextEditor.document.uri.path,
-              );
+              // const uri = resolveUriToFilePrefix( activeTextEditor.document.uri.path,);
+              const uri = activeTextEditor.document.uri.toString();
               const tokenSource = new vscode.CancellationTokenSource();
               const { config, layoutString, implementations, machineIndex } =
                 await languageClient.sendRequest(
